@@ -1,0 +1,893 @@
+/* Savings Quest — styles.
+   Reuses the --mm-* tokens defined in index.html (custom properties
+   cascade document-wide regardless of which stylesheet declares them),
+   so this stays visually consistent with the rest of the app without
+   duplicating the palette. */
+
+.sq-panel {
+  margin-bottom: 20px;
+}
+
+.sq-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 6px 0 rgba(18, 116, 47, 0.1);
+  margin-bottom: 16px;
+}
+
+.sq-card h2 {
+  margin: 0 0 14px;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: var(--mm-gray-90);
+}
+
+/* ---------- Density modes ----------
+   "young" = ages 6-9: bigger touch targets, bigger text, more icons.
+   "older" = ages 10-14: more compact, same components. Default (no
+   class yet, e.g. before hero creation) behaves like "older". */
+
+.sq-density-young {
+  --sq-tap-size: 56px;
+  --sq-font-scale: 1.15;
+  --sq-gap: 14px;
+}
+
+.sq-density-older {
+  --sq-tap-size: 44px;
+  --sq-font-scale: 1;
+  --sq-gap: 10px;
+}
+
+.sq-panel {
+  font-size: calc(1rem * var(--sq-font-scale, 1));
+}
+
+/* ---------- Option grids (look / palette / class / density pickers) ---------- */
+
+.sq-option-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sq-gap, 10px);
+  margin-bottom: 16px;
+}
+
+.sq-option-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: var(--sq-tap-size, 44px);
+  min-height: var(--sq-tap-size, 44px);
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 3px solid var(--mm-gray-10);
+  background: var(--mm-gray-10);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--mm-gray-90);
+  cursor: pointer;
+}
+
+.sq-option-btn:focus-visible {
+  outline: 3px solid var(--mm-blue);
+  outline-offset: 2px;
+}
+
+.sq-option-btn[aria-pressed="true"] {
+  border-color: var(--mm-blue);
+  background: var(--mm-blue-bg);
+}
+
+.sq-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+.sq-class-flavor {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--mm-gray-70);
+  text-align: center;
+}
+
+.sq-text-input {
+  width: 100%;
+  border: 2px solid var(--mm-gray-10);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.sq-text-input:focus {
+  outline: none;
+  border-color: var(--mm-blue);
+}
+
+.sq-primary-btn {
+  display: block;
+  width: 100%;
+  border: none;
+  background: var(--mm-green);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: 14px;
+  padding: 14px 0;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--mm-green-dark);
+}
+
+.sq-primary-btn:disabled {
+  background: var(--mm-gray-50);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.sq-secondary-btn {
+  display: block;
+  width: 100%;
+  border: none;
+  background: var(--mm-blue);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  padding: 12px 0;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--mm-blue-dark);
+}
+
+/* ---------- Hero card ---------- */
+
+.sq-hero-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.sq-hero-avatar {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.sq-hero-name {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--mm-gray-90);
+}
+
+.sq-hero-level {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--mm-green-dark);
+}
+
+.sq-xp-track {
+  background: var(--mm-gray-10);
+  border-radius: 999px;
+  height: 16px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.sq-xp-fill {
+  background: var(--mm-green);
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.sq-xp-label {
+  font-size: 0.8rem;
+  color: var(--mm-gray-70);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.sq-next-unlock {
+  background: var(--mm-amber-bg);
+  color: var(--mm-amber-dark);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* ---------- Milestone path ---------- */
+
+.sq-milestone-path {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.sq-milestone-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  position: relative;
+}
+
+.sq-milestone-node:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 55%;
+  width: 90%;
+  height: 4px;
+  background: var(--mm-gray-10);
+  z-index: 0;
+}
+
+.sq-milestone-node.reached:not(:last-child)::after {
+  background: var(--mm-green);
+}
+
+.sq-milestone-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mm-gray-10);
+  color: var(--mm-gray-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  z-index: 1;
+}
+
+.sq-milestone-node.reached .sq-milestone-dot {
+  background: var(--mm-green);
+  color: #fff;
+}
+
+.sq-milestone-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--mm-gray-70);
+}
+
+/* ---------- Goal propose / pending ---------- */
+
+.sq-pending-note {
+  background: var(--mm-amber-bg);
+  border: 2px dashed var(--mm-amber);
+  color: var(--mm-amber-dark);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ---------- Parent approval card ---------- */
+
+.sq-approval-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.sq-approval-row .sq-primary-btn,
+.sq-approval-row .sq-decline-btn {
+  flex: 1;
+}
+
+.sq-decline-btn {
+  border: none;
+  background: none;
+  color: var(--mm-blue);
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- Feedback moments ---------- */
+
+.sq-coin-burst {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.8rem;
+  z-index: 1200;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-sq-motion="on"] .sq-coin-burst {
+    animation: sq-coin-fly 1.1s ease-out forwards;
+  }
+}
+
+@keyframes sq-coin-fly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--sq-coin-dx, 0), var(--sq-coin-dy, -80px)) scale(0.4);
+    opacity: 0;
+  }
+}
+
+.sq-levelup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 53, 20, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1300;
+}
+
+.sq-levelup-card {
+  background: linear-gradient(135deg, var(--mm-green-bg) 0%, var(--mm-yellow-bg) 100%);
+  border: 3px dashed var(--mm-green);
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  max-width: 320px;
+}
+
+[data-sq-motion="on"] .sq-levelup-card {
+  animation: sq-pop-in 0.4s ease-out;
+}
+
+@keyframes sq-pop-in {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.sq-levelup-card h2 {
+  font-family: "Poppins", sans-serif;
+  color: var(--mm-green-dark);
+  font-size: 1.6rem;
+  margin: 8px 0;
+}
+
+.sq-levelup-done-btn {
+  border: none;
+  background: var(--mm-green);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: 14px;
+  padding: 12px 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--mm-green-dark);
+  margin-top: 12px;
+}
+
+/* ---------- Stage 3: Gear, Skills, Loadout ---------- */
+
+.sq-tab-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.sq-tab-btn {
+  flex: 1;
+  border: 2px solid var(--mm-gray-10);
+  background: var(--mm-gray-10);
+  color: var(--mm-gray-90);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 14px;
+  padding: 10px;
+  cursor: pointer;
+  min-height: var(--sq-tap-size, 44px);
+}
+
+.sq-tab-btn[aria-expanded="true"] {
+  border-color: var(--mm-blue);
+  background: var(--mm-blue-bg);
+  color: var(--mm-blue);
+}
+
+.sq-stats-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.sq-stat {
+  flex: 1;
+  background: var(--mm-gray-10);
+  border-radius: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+.sq-stat-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--mm-gray-70);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.sq-stat-value {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--mm-gray-90);
+}
+
+.sq-loadout-slot {
+  margin-bottom: 18px;
+}
+
+.sq-loadout-slot-label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: var(--mm-gray-90);
+  margin-bottom: 8px;
+}
+
+.sq-item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.sq-item-card {
+  border: 2px solid var(--mm-gray-10);
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px;
+  text-align: center;
+  font-family: inherit;
+}
+
+.sq-item-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 2px solid var(--mm-gray-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.sq-item-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--mm-gray-90);
+  margin-top: 4px;
+}
+
+.sq-item-rarity {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+}
+
+.sq-item-owned {
+  cursor: pointer;
+}
+
+.sq-item-owned:hover,
+.sq-item-owned:focus-visible {
+  border-color: var(--mm-blue);
+}
+
+.sq-item-equipped {
+  border-color: var(--mm-green);
+  background: var(--mm-green-bg);
+}
+
+.sq-item-equipped-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--mm-green-dark);
+  margin-top: 2px;
+}
+
+.sq-item-locked {
+  opacity: 0.55;
+  filter: grayscale(0.6);
+}
+
+.sq-item-locked .sq-item-icon {
+  filter: grayscale(1);
+}
+
+.sq-item-req {
+  font-size: 0.7rem;
+  color: var(--mm-gray-70);
+  margin-top: 4px;
+}
+
+.sq-xp-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--mm-gray-70);
+  margin-bottom: 14px;
+}
+
+.sq-skill-tree {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.sq-skill-branch-label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: var(--mm-gray-90);
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sq-class-flavor {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--mm-gray-50);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.sq-skill-node {
+  border: 2px solid var(--mm-gray-10);
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.sq-skill-node.sq-skill-learned {
+  border-color: var(--mm-green);
+  background: var(--mm-green-bg);
+}
+
+.sq-skill-name {
+  font-weight: 700;
+  color: var(--mm-gray-90);
+  font-size: 0.9rem;
+}
+
+.sq-skill-icon {
+  margin-right: 6px;
+  font-size: 1.1rem;
+}
+
+.sq-skill-desc {
+  font-size: 0.8rem;
+  color: var(--mm-gray-70);
+  margin: 4px 0 8px;
+}
+
+.sq-skill-status {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--mm-green-dark);
+}
+
+.sq-skill-learn-btn {
+  border: none;
+  background: var(--mm-blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.sq-skill-learn-btn:disabled {
+  background: var(--mm-gray-50);
+  cursor: not-allowed;
+}
+
+.sq-reveal-icon .sq-item-icon {
+  width: 72px;
+  height: 72px;
+  font-size: 2.4rem;
+}
+
+.sq-reveal-rarity {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 8px;
+}
+
+/* ---------- Stage 6: audio captions ---------- */
+
+.sq-sound-caption {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  transform: translateX(-50%);
+  background: rgba(31, 36, 38, 0.88);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  z-index: 1400;
+  pointer-events: none;
+}
+
+/* ---------- Stage 5: Parent Experience ---------- */
+
+.sq-banner-card {
+  background: var(--mm-amber-bg);
+  border: 2px dashed var(--mm-amber);
+}
+
+.sq-banner-card strong {
+  color: var(--mm-amber-dark);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sq-banner-card p {
+  color: var(--mm-gray-90);
+  margin: 0 0 10px;
+}
+
+/* ---------- Stage 4: Open World v1 ---------- */
+
+.sq-world-gate-hint {
+  color: var(--mm-gray-70);
+  font-size: 0.9rem;
+  margin: 8px 0 14px;
+}
+
+.sq-stamina-row {
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  margin: 6px 0 4px;
+}
+
+.sq-herohub-link {
+  border: none;
+  background: none;
+  color: var(--mm-blue);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 10px 0 0;
+  display: block;
+}
+
+.sq-herohub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* World canvas shell */
+
+.sq-world-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sq-world-hud-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sq-world-region-name {
+  flex: 1;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: var(--mm-gray-90);
+}
+
+.sq-world-hud-btn {
+  border: 2px solid var(--mm-gray-10);
+  background: var(--mm-gray-10);
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: var(--sq-tap-size, 40px);
+}
+
+#sqWorldCanvasMount {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 800 / 480;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--mm-gray-10);
+}
+
+#sqWorldCanvasMount canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.sq-world-hud-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sq-world-region-switch {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sq-world-region-btn {
+  border: 2px solid var(--mm-gray-10);
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sq-world-region-btn-active {
+  border-color: var(--mm-blue);
+  background: var(--mm-blue-bg);
+  color: var(--mm-blue);
+}
+
+.sq-world-interact-btn {
+  min-width: 160px;
+}
+
+.sq-world-interact-btn:disabled {
+  background: var(--mm-gray-50);
+  box-shadow: none;
+}
+
+/* Dialogue / puzzle / boss modals (share .sq-levelup-overlay/.sq-levelup-card) */
+
+.sq-npc-card h2,
+.sq-puzzle-card h2,
+.sq-boss-card h2 {
+  font-family: "Poppins", sans-serif;
+  color: var(--mm-green-dark);
+  font-size: 1.3rem;
+}
+
+.sq-npc-lesson {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--mm-gray-90);
+}
+
+.sq-puzzle-tiles {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 14px 0;
+  flex-wrap: wrap;
+}
+
+.sq-puzzle-tile {
+  border: 2px solid var(--mm-amber);
+  background: var(--mm-amber-bg);
+  color: var(--mm-amber-dark);
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.sq-puzzle-tile:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sq-puzzle-tile-picked {
+  border-color: var(--mm-green);
+  background: var(--mm-green-bg);
+}
+
+.sq-puzzle-answer {
+  min-height: 1.4em;
+  font-weight: 700;
+  color: var(--mm-green-dark);
+}
+
+.sq-puzzle-sort {
+  text-align: left;
+  margin: 14px 0;
+}
+
+.sq-puzzle-sort-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--mm-gray-10);
+}
+
+.sq-puzzle-sort-choices {
+  display: flex;
+  gap: 6px;
+}
+
+.sq-puzzle-choice {
+  border: 2px solid var(--mm-gray-10);
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sq-puzzle-choice-picked {
+  border-color: var(--mm-blue);
+  background: var(--mm-blue-bg);
+  color: var(--mm-blue);
+}
+
+.sq-boss-sequence {
+  min-height: 2.4rem;
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+.sq-boss-icon,
+.sq-boss-icon-flash {
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.sq-boss-choices {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.sq-boss-icon-btn {
+  border: 2px solid var(--mm-gray-10);
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.sq-boss-win {
+  font-weight: 700;
+  color: var(--mm-green-dark);
+}
